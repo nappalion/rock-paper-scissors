@@ -1,9 +1,9 @@
 function computerPlay() {
-    let pick = Math.floor(Math.random()*3+1)
-    if (pick === 1) {
+    let pick = Math.floor(Math.random()*3)
+    if (pick === 0) {
         return "rock"
     }
-    else if (pick === 2) {
+    else if (pick === 1) {
         return "paper"
     }
     else {
@@ -72,7 +72,7 @@ function game() {
     }
 }
 
-game()
+console.log(game())
 
 /*
 const playerSelection = "rock";
