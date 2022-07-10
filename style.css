@@ -12,7 +12,6 @@ div {
     font-family: 'Common Pixel', sans-serif;
     color: white;
     font-size: 75px;
-    padding: 40px;
 }
 
 .menu-button {
@@ -32,10 +31,60 @@ div {
     height: auto;
 }
 
-#log {
-    white-space: pre-wrap
+.background {
+    width: 100%;
+    height: 60%;
+    background-position: center;
+    background-size: 100% 100%;
+    background-repeat: no-repeat;
+    background-image: url('assets/images/etc/background.png');
+    display: flex;
+    flex-direction: column-reverse;
 }
 
-div {
-    margin: 10px;
+.gon-sprite {
+    width: 100px;
+    height: 100px;
+}
+
+.pitou-sprite {
+    width: 100px;
+    height: 100px;
+    transform: rotateY(180deg);
+}
+
+.gon-frame {
+    width: 80px;
+    padding: 80px;
+    background-position: center;
+    background-size: 60% 60%;
+    background-repeat: no-repeat;
+    background-image: url('assets/images/etc/gon-frame.png');
+}
+
+.pitou-frame {
+    width: 80px;
+    padding: 85px;
+    background-position: center;
+    background-size: 60% 60%;
+    background-repeat: no-repeat;
+    background-image: url('assets/images/etc/pitou-frame.png');
+}
+
+.floor {
+    display: flex;
+    justify-content: center;
+    align-items: flex-end;
+}
+
+.rock, .paper, .scissors {
+    border-radius: 10px;
+    border-color: transparent;
+    background-color: antiquewhite;
+    margin: 50px 20px 50px 20px
+}
+
+.rock img, .paper img, .scissors img { 
+    height: 100px;
+    width: 100px
 }

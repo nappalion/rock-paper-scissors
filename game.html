@@ -5,13 +5,18 @@
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <button>Rock</button>
-    <button>Paper</button>
-    <button>Scissors</button>
-    <div>Results:</div>
-    <div id="results"></div>
-    <div id="end">Result of game up to 5: </div>
-    <div>Game Log:</div>
-    <div id="log"></div>
+    <div class="background">
+        <div class="floor">
+            <img class="gon-sprite" src="assets/images/gon-animations/gon-idle.gif">
+            <img class="gon-frame" src="assets/images/etc/paper-icon.png">
+            <img class="pitou-frame" src="assets/images/etc/paper-icon.png">
+            <img class="pitou-sprite" src="assets/images/pitou-animations/pitou-idle.gif">
+        </div>  
+    </div>
+    <div class="player-choice">
+        <button class="rock"><img src="assets/images/etc/rock-icon.png"></button>
+        <button class="paper"><img src="assets/images/etc/paper-icon.png"></button>
+        <button class="scissors"><img src="assets/images/etc/scissors-icon.png"></button>
+    </div>
     <script src=javascript.js></script>
 </body>
