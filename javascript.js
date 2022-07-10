@@ -21,26 +21,35 @@ function playRound(playerSelection = '', computerSelection) {
     gonFrame.src = choiceIcon(playerSelection, true);
 
     if (playerSelection === "rock" && computerSelection === "paper") {
+        hitAudio.play();
         console.log("You LOSE! Paper beats Rock \n");
         return 0;
     }
     else if (playerSelection === "paper" && computerSelection === "rock") {
+        nyaAudio.play();
+        animePunchAudio.play();
         console.log("You WIN! Paper beats Rock \n");
         return 1;
     }
     else if (playerSelection === "rock" && computerSelection === "scissors") {
+        nyaAudio.play();
+        animePunchAudio.play();
         console.log("You WIN! Rock beats Scissors \n");
         return 1;
     }
     else if (playerSelection === "scissors" && computerSelection === "rock") {
+        hitAudio.play();
         console.log("You LOSE! Rock beats Scissors \n");
         return 0;
     }
     else if (playerSelection === "paper" && computerSelection === "scissors") {
+        hitAudio.play();
         console.log("You LOSE! Scissors beats Paper \n");
         return 0;
     }
     else if (playerSelection === "scissors" && computerSelection === "paper") {
+        nyaAudio.play();
+        animePunchAudio.play();
         console.log("You WIN! Scissors beats Paper \n");
         return 1;
     }
@@ -87,7 +96,6 @@ function choiceIcon(selection, isGon = false) {
         default:
             return 'error';
     }
-        
 }
 
 function playGame(playerSelection) {
@@ -102,9 +110,9 @@ function playGame(playerSelection) {
     }
 
     if (playerScore == 5) {
-        endDiv.textContent += "You WIN! The PC loses!";
+        "You WIN! The PC loses!";
     } else if (computerScore == 5) {
-        endDiv.textContent += "You LOSE! The PC wins!";
+        "You LOSE! The PC wins!";
     }
     
 
@@ -114,6 +122,9 @@ function playGame(playerSelection) {
 let rockAudio = new Audio('assets/sounds/rock-sound.mp3');
 let paperAudio = new Audio('assets/sounds/paper-sound.mp3');
 let scissorsAudio = new Audio('assets/sounds/scissors-sound.mp3');
+let hitAudio = new Audio('assets/sounds/hit-sound.mp3');
+let nyaAudio = new Audio('assets/sounds/nya-sound.mp3');
+let animePunchAudio = new Audio('assets/sounds/anime-punch-sound.mp3');
 
 let playerScore = 0;
 let computerScore = 0;
