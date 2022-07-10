@@ -14,35 +14,35 @@ function computerPlay() {
 function playRound(playerSelection = '', computerSelection) {
     playerSelection = playerSelection.toLowerCase();
     if (playerSelection === "rock" && computerSelection === "paper") {
-        outcomeDiv.textContent += "You LOSE! Paper beats Rock \n";
+        //outcomeDiv.textContent += "You LOSE! Paper beats Rock \n";
         return 0;
     }
     else if (playerSelection === "paper" && computerSelection === "rock") {
-        outcomeDiv.textContent += "You WIN! Paper beats Rock \n";
+        //outcomeDiv.textContent += "You WIN! Paper beats Rock \n";
         return 1;
     }
     else if (playerSelection === "rock" && computerSelection === "scissors") {
-        outcomeDiv.textContent += "You WIN! Rock beats Scissors \n";
+        //outcomeDiv.textContent += "You WIN! Rock beats Scissors \n";
         return 1;
     }
     else if (playerSelection === "scissors" && computerSelection === "rock") {
-        outcomeDiv.textContent += "You LOSE! Rock beats Scissors \n";
+        //textContent += "You LOSE! Rock beats Scissors \n";
         return 0;
     }
     else if (playerSelection === "paper" && computerSelection === "scissors") {
-        outcomeDiv.textContent += "You LOSE! Scissors beats Paper \n";
+        //outcomeDiv.textContent += "You LOSE! Scissors beats Paper \n";
         return 0;
     }
     else if (playerSelection === "scissors" && computerSelection === "paper") {
-        outcomeDiv.textContent += "You WIN! Scissors beats Paper \n";
+        //outcomeDiv.textContent += "You WIN! Scissors beats Paper \n";
         return 1;
     }
     else if (playerSelection === computerSelection) {
-        outcomeDiv.textContent += "It's a TIE! \n";
+        //outcomeDiv.textContent += "It's a TIE! \n";
         return 2;
     }
     else {
-        outcomeDiv.textContent += "Error. \n";
+        //outcomeDiv.textContent += "Error. \n";
         return 2;
     }
 }
@@ -72,17 +72,21 @@ let playerScore = 0;
 let computerScore = 0;
 let playerSelection;
 
-let resultsDiv = document.querySelector('#results');
-let outcomeDiv = document.querySelector('#log');
-let endDiv = document.querySelector('#end');
-
-let playerButtons = document.querySelectorAll('button');
+let gon = document.querySelector('.gon-sprite');
+let pitou = document.querySelector('.pitou-sprite');
+let playerButtons = document.querySelectorAll('.choice');
 playerButtons.forEach((button) => {
     button.addEventListener('click', () => {
-        playerSelection = button.textContent;
-        if (playerScore < 5 && computerScore < 5) {
-            resultsDiv.textContent = playGame(playerSelection);
+        
+        if (button.classList.contains('rock')) {
+            playerSelection = 'rock';
+        } else if (button.classList.contains('paper')) {
+            playerSelection = 'paper';
+        } else if (button.classList.contains('scissors')) {
+            playerSelection = 'scissors';
         }
+        
+
     });
 });
 
