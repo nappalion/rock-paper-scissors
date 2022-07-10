@@ -160,6 +160,21 @@ function playGame(playerSelection) {
     return "Score: " + playerScore + " to " + computerScore;
 }
 
+function fadeIn() {
+    var fade = document.querySelector("body");
+    var opacity = 0;
+    var intervalID = setInterval(function() {
+        if (opacity < 1) {
+            opacity = opacity + 0.02
+            fade.style.opacity = opacity;
+        } else {
+            clearInterval(intervalID); // clears the interval
+        }
+    }, 100);
+}
+
+window.onload = fadeIn;
+
 let tempScore = document.querySelector('p');
 
 let rockAudio = new Audio('assets/sounds/rock-sound.mp3');

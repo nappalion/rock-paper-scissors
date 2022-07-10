@@ -8,6 +8,10 @@ html, body {
     background-color: black;
 }
 
+.game {
+    opacity: 0;
+}
+
 div {
     font-family: 'Common Pixel', sans-serif;
     color: white;
