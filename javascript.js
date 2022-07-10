@@ -148,15 +148,19 @@ function playGame(playerSelection) {
         playerScore++;
     }
 
-    if (playerScore == 5) {
-        "You WIN! The PC loses!";
-    } else if (computerScore == 5) {
-        "You LOSE! The PC wins!";
+    if (playerScore >= 5) {
+        setTimeout(function() { pitou.src = 'assets/images/pitou-animations/pitou-dead.gif'; }, 1000);
+        playerChoiceButtons.remove();
+    } else if (computerScore >= 5) {
+        setTimeout(function() { gon.src = 'assets/images/gon-animations/gon-dead.gif'; }, 2000);
+        playerChoiceButtons.remove();
     }
     
 
     return "Score: " + playerScore + " to " + computerScore;
 }
+
+let tempScore = document.querySelector('p');
 
 let rockAudio = new Audio('assets/sounds/rock-sound.mp3');
 let paperAudio = new Audio('assets/sounds/paper-sound.mp3');
@@ -169,11 +173,12 @@ let playerScore = 0;
 let computerScore = 0;
 let playerSelection;
 
-let gon = document.querySelector('.gon-sprite');
-let gonFrame = document.querySelector('.gon-frame');
-let pitou = document.querySelector('.pitou-sprite');
-let pitouFrame = document.querySelector('.pitou-frame');
-let playerButtons = document.querySelectorAll('.choice');
+const gon = document.querySelector('.gon-sprite');
+const gonFrame = document.querySelector('.gon-frame');
+const pitou = document.querySelector('.pitou-sprite');
+const pitouFrame = document.querySelector('.pitou-frame');
+const playerButtons = document.querySelectorAll('.choice');
+const playerChoiceButtons = document.querySelector('.player-choice');
 playerButtons.forEach((button) => {
     button.addEventListener('click', () => {
         
@@ -185,15 +190,6 @@ playerButtons.forEach((button) => {
             playerSelection = 'scissors';
         }
         
-        playGame(playerSelection);
+        tempScore.textContent = playGame(playerSelection);
     });
 });
-
-
-
-
-/*
-const playerSelection = "rock";
-const computerSelection = computerPlay();
-console.log("You chose " + playerSelection + " and the computer chose " + computerSelection)
-console.log(playRound(playerSelection, computerSelection))*/
