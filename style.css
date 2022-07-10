@@ -93,3 +93,11 @@ div {
     height: 100px;
     width: 100px;
 }
+
+.grow { 
+    transition: all .2s ease-in-out; 
+}
+    
+.grow:hover { 
+    transform: scale(1.2); 
+}
