@@ -26,14 +26,14 @@ function playRound(playerSelection = '', computerSelection) {
         return 0;
     }
     else if (playerSelection === "paper" && computerSelection === "rock") {
-        nyaAudio.play();
         animePunchAudio.play();
+        setTimeout(function() { nyaAudio.play(); }, 1000);
         console.log("You WIN! Paper beats Rock \n");
         return 1;
     }
     else if (playerSelection === "rock" && computerSelection === "scissors") {
-        nyaAudio.play();
         animePunchAudio.play();
+        setTimeout(function() { nyaAudio.play(); }, 1000);
         console.log("You WIN! Rock beats Scissors \n");
         return 1;
     }
@@ -48,8 +48,8 @@ function playRound(playerSelection = '', computerSelection) {
         return 0;
     }
     else if (playerSelection === "scissors" && computerSelection === "paper") {
-        nyaAudio.play();
         animePunchAudio.play();
+        setTimeout(function() { nyaAudio.play(); }, 1000);
         console.log("You WIN! Scissors beats Paper \n");
         return 1;
     }
