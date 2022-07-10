@@ -1,50 +1,93 @@
 function computerPlay() {
     let pick = Math.floor(Math.random()*3);
+
     if (pick === 0) {
+        pitouFrame.src = choiceIcon('rock');
         return "rock";
     }
     else if (pick === 1) {
+        pitouFrame.src = choiceIcon('paper');
         return "paper";
     }
     else {
+        pitouFrame.src = choiceIcon('scissors');
         return "scissors";
     }
 }
 
 function playRound(playerSelection = '', computerSelection) {
     playerSelection = playerSelection.toLowerCase();
+
+    gonFrame.src = choiceIcon(playerSelection, true);
+
     if (playerSelection === "rock" && computerSelection === "paper") {
-        //outcomeDiv.textContent += "You LOSE! Paper beats Rock \n";
+        console.log("You LOSE! Paper beats Rock \n");
         return 0;
     }
     else if (playerSelection === "paper" && computerSelection === "rock") {
-        //outcomeDiv.textContent += "You WIN! Paper beats Rock \n";
+        console.log("You WIN! Paper beats Rock \n");
         return 1;
     }
     else if (playerSelection === "rock" && computerSelection === "scissors") {
-        //outcomeDiv.textContent += "You WIN! Rock beats Scissors \n";
+        console.log("You WIN! Rock beats Scissors \n");
         return 1;
     }
     else if (playerSelection === "scissors" && computerSelection === "rock") {
-        //textContent += "You LOSE! Rock beats Scissors \n";
+        console.log("You LOSE! Rock beats Scissors \n");
         return 0;
     }
     else if (playerSelection === "paper" && computerSelection === "scissors") {
-        //outcomeDiv.textContent += "You LOSE! Scissors beats Paper \n";
+        console.log("You LOSE! Scissors beats Paper \n");
         return 0;
     }
     else if (playerSelection === "scissors" && computerSelection === "paper") {
-        //outcomeDiv.textContent += "You WIN! Scissors beats Paper \n";
+        console.log("You WIN! Scissors beats Paper \n");
         return 1;
     }
     else if (playerSelection === computerSelection) {
-        //outcomeDiv.textContent += "It's a TIE! \n";
+        console.log("It's a TIE! \n");
         return 2;
     }
     else {
         //outcomeDiv.textContent += "Error. \n";
         return 2;
     }
+}
+
+
+function choiceIcon(selection, isGon = false) {
+    switch(selection) {
+        case 'rock': 
+            if (isGon) {
+                gon.src = 'assets/images/gon-animations/gon-rock.gif';
+                rockAudio.play();
+                setTimeout(function() {
+                    gon.src = 'assets/images/gon-animations/gon-idle.gif';
+                }, 1500);
+            }
+            return 'assets/images/etc/rock-icon.png';
+        case 'paper': 
+            if (isGon) {
+                gon.src = 'assets/images/gon-animations/gon-paper.gif'
+                paperAudio.play();
+                setTimeout(function() {
+                    gon.src = 'assets/images/gon-animations/gon-idle.gif';
+                }, 1400);
+            }
+            return 'assets/images/etc/paper-icon.png';
+        case 'scissors': 
+            if (isGon) {
+                gon.src = 'assets/images/gon-animations/gon-scissors.gif'
+                scissorsAudio.play();
+                setTimeout(function() {
+                    gon.src = 'assets/images/gon-animations/gon-idle.gif';
+                }, 950);
+            }
+            return 'assets/images/etc/scissors-icon.png';
+        default:
+            return 'error';
+    }
+        
 }
 
 function playGame(playerSelection) {
@@ -68,12 +111,18 @@ function playGame(playerSelection) {
     return "Score: " + playerScore + " to " + computerScore;
 }
 
+let rockAudio = new Audio('assets/sounds/rock-sound.mp3');
+let paperAudio = new Audio('assets/sounds/paper-sound.mp3');
+let scissorsAudio = new Audio('assets/sounds/scissors-sound.mp3');
+
 let playerScore = 0;
 let computerScore = 0;
 let playerSelection;
 
 let gon = document.querySelector('.gon-sprite');
+let gonFrame = document.querySelector('.gon-frame');
 let pitou = document.querySelector('.pitou-sprite');
+let pitouFrame = document.querySelector('.pitou-frame');
 let playerButtons = document.querySelectorAll('.choice');
 playerButtons.forEach((button) => {
     button.addEventListener('click', () => {
@@ -86,7 +135,7 @@ playerButtons.forEach((button) => {
             playerSelection = 'scissors';
         }
         
-
+        playGame(playerSelection);
     });
 });
 
