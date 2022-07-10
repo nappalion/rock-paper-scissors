@@ -181,7 +181,12 @@ const playerButtons = document.querySelectorAll('.choice');
 const playerChoiceButtons = document.querySelector('.player-choice');
 playerButtons.forEach((button) => {
     button.addEventListener('click', () => {
-        
+
+        playerButtons.forEach((button) => { 
+            button.disabled = true;
+            button.style.cursor = 'not-allowed'; 
+        })
+
         if (button.classList.contains('rock')) {
             playerSelection = 'rock';
         } else if (button.classList.contains('paper')) {
@@ -189,7 +194,13 @@ playerButtons.forEach((button) => {
         } else if (button.classList.contains('scissors')) {
             playerSelection = 'scissors';
         }
-        
+
         tempScore.textContent = playGame(playerSelection);
+
+        setTimeout(function() {
+            playerButtons.forEach((button) => { 
+                button.disabled = false;
+                button.style.cursor = 'grab'; 
+            })}, 2500);
     });
 });
