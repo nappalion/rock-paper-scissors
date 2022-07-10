@@ -161,7 +161,7 @@ function playGame(playerSelection) {
 }
 
 function fadeIn() {
-    var fade = document.querySelector("body");
+    var fade = document.querySelector(".game");
     var opacity = 0;
     var intervalID = setInterval(function() {
         if (opacity < 1) {

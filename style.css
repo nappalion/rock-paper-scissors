@@ -18,6 +18,14 @@ div {
     font-size: 75px;
 }
 
+.intro {
+    height: 100%;
+    width: 100%;
+    font-size: 300%;
+    align-items: flex-start;
+    justify-content: flex-start;
+}
+
 .menu-button {
     width: 25%;
     background-color: orange;
