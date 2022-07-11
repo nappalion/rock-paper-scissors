@@ -138,15 +138,22 @@ function choiceIcon(selection, isGon = false) {
     }
 }
 
+
+
 function playGame(playerSelection) {
     let computerSelection = computerPlay();
     let outcome = playRound(playerSelection, computerSelection);
+    
 
     if (outcome == 0) {
         computerScore++;
+        gonHealthNum -= gonHealthMax / maxScore;
+        gonHealth.style.width = gonHealthNum.toString() + 'px';
     }
     else if (outcome == 1) {
         playerScore++;
+        pitouHealthNum -= pitouHealthMax / maxScore;
+        pitouHealth.style.width = pitouHealthNum.toString() + 'px';
     }
 
     if (playerScore >= maxScore) {
@@ -178,7 +185,6 @@ function fadeIn() {
 
 window.onload = fadeIn;
 
-let tempScore = document.querySelector('p');
 const maxScore = 5;
 
 let rockAudio = new Audio('assets/sounds/rock-sound.mp3');
@@ -194,14 +200,22 @@ let playerSelection;
 
 const gon = document.querySelector('.gon-sprite');
 const gonFrame = document.querySelector('.gon-frame');
+const gonHealth = document.querySelector('.gon-health');
 const pitou = document.querySelector('.pitou-sprite');
 const pitouFrame = document.querySelector('.pitou-frame');
+const pitouHealth = document.querySelector('.pitou-health');
+
 const playerButtons = document.querySelectorAll('.choice');
 const playerChoiceButtons = document.querySelector('.player-choice');
 const popup = document.querySelector('.popup');
 const popupText = document.querySelector('.popup-text');
 const popupButton = document.querySelector('.popup-button');
 const background = document.querySelector('.background');
+
+const gonHealthMax = parseInt(gonHealth.clientWidth, 10);
+const pitouHealthMax = parseInt(pitouHealth.clientWidth, 10);
+let gonHealthNum = gonHealthMax;
+let pitouHealthNum = pitouHealthMax;
 
 popupButton.addEventListener('click', () => { location.reload(); } );
 
@@ -221,7 +235,7 @@ playerButtons.forEach((button) => {
             playerSelection = 'scissors';
         }
 
-        tempScore.textContent = playGame(playerSelection);
+        playGame(playerSelection);
 
         setTimeout(function() {
             playerButtons.forEach((button) => { 
