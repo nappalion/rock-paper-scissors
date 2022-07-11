@@ -162,10 +162,16 @@ function playGame(playerSelection) {
         setTimeout(function() { pitou.src = 'assets/images/pitou-animations/pitou-dead.gif'; }, 1000);
         popupText.textContent = "VICTORY";
         popup.style.visibility = "visible";
+        victoryThemeAudio.play();
+        battleThemeAudio.volume = 0;
+        audioToggle.disabled = true;
         
     } else if (computerScore >= maxScore) {
         popupText.textContent = "DEFEAT";
         popup.style.visibility = "visible";
+        defeatThemeAudio.play();
+        battleThemeAudio.volume = 0;
+        audioToggle.disabled = true;
     }
     
 
@@ -189,13 +195,15 @@ window.onload = fadeIn;
 
 const maxScore = 5;
 
-let rockAudio = new Audio('assets/sounds/rock-sound.mp3');
-let paperAudio = new Audio('assets/sounds/paper-sound.mp3');
-let scissorsAudio = new Audio('assets/sounds/scissors-sound.mp3');
-let hitAudio = new Audio('assets/sounds/hit-sound.mp3');
-let nyaAudio = new Audio('assets/sounds/nya-sound.mp3');
-let animePunchAudio = new Audio('assets/sounds/anime-punch-sound.mp3');
-let battleThemeAudio = new Audio('assets/sounds/battle-theme.mp3');
+const rockAudio = new Audio('assets/sounds/rock-sound.mp3');
+const paperAudio = new Audio('assets/sounds/paper-sound.mp3');
+const scissorsAudio = new Audio('assets/sounds/scissors-sound.mp3');
+const hitAudio = new Audio('assets/sounds/hit-sound.mp3');
+const nyaAudio = new Audio('assets/sounds/nya-sound.mp3');
+const animePunchAudio = new Audio('assets/sounds/anime-punch-sound.mp3');
+const battleThemeAudio = new Audio('assets/sounds/battle-theme.mp3');
+const victoryThemeAudio = new Audio('assets/sounds/victory-theme.mp3');
+const defeatThemeAudio = new Audio('assets/sounds/defeat-theme.mp3');
 
 let playerScore = 0;
 let computerScore = 0;
@@ -226,6 +234,9 @@ let pitouHealthNum = pitouHealthMax;
 battleThemeAudio.loop = true;
 battleThemeAudio.volume = 0.2;
 document.body.addEventListener("click", function () { battleThemeAudio.play(); });
+
+victoryThemeAudio.volume = 0.2;
+defeatThemeAudio.volume = 0.5;
 
 popupButton.addEventListener('click', () => { location.reload(); } );
 
