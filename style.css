@@ -8,6 +8,43 @@ html, body {
     background-color: black;
 }
 
+.ceiling {
+    width: 90%;
+    height: auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    position: relative;
+}
+
+.health-bar {
+    z-index: 2;
+    max-width: 500px;
+    max-height: 100px;
+    height: auto;
+    width: auto;
+}
+
+.gon-health {
+    z-index: 1;
+    width: 209px;
+    height: 30px;
+    background-color: red;
+    position: absolute;
+    top: 47px;
+    left: 54px;
+}
+
+.pitou-health {
+    z-index: 1;
+    width: 206px;
+    height: 30px;
+    background-color: red;
+    position: absolute;
+    top: 44px;
+    right: 115px;
+}
+
 .game {
     opacity: 0;
 }
@@ -77,7 +114,7 @@ h2 {
 
 .background {
     width: 100%;
-    height: 60%;
+    height: 400px;
     background-position: center;
     background-size: 100% 100%;
     background-repeat: no-repeat;
@@ -145,4 +182,23 @@ h2 {
 .grow:hover { 
     transform: scale(1.2);
     filter: drop-shadow(0px 0px 10px #fff); 
+}
+
+@keyframes shake {
+    0% { transform: translate(1px, 1px) rotate(0deg); }
+    10% { transform: translate(-1px, -2px) rotate(-1deg); }
+    20% { transform: translate(-3px, 0px) rotate(1deg); }
+    30% { transform: translate(3px, 2px) rotate(0deg); }
+    40% { transform: translate(1px, -1px) rotate(1deg); }
+    50% { transform: translate(-1px, 2px) rotate(-1deg); }
+    60% { transform: translate(-3px, 1px) rotate(0deg); }
+    70% { transform: translate(3px, 1px) rotate(-1deg); }
+    80% { transform: translate(-1px, -1px) rotate(1deg); }
+    90% { transform: translate(1px, 2px) rotate(0deg); }
+    100% { transform: translate(1px, -2px) rotate(-1deg); }
+  }
+
+.shake {
+    animation: shake 0.5s;
+    animation-iteration-count: 0.2;
 }

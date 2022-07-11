@@ -56,8 +56,10 @@ function gonScissors() {
 function gonHit() {
     setTimeout(function() {
         gon.src = 'assets/images/gon-animations/gon-hit.gif'
+        background.classList.add('shake');
         setTimeout(function() {
             gon.src = 'assets/images/gon-animations/gon-idle.gif';
+            background.classList.remove('shake');
         }, 950);
     }, 1000);
 }
@@ -199,6 +201,7 @@ const playerChoiceButtons = document.querySelector('.player-choice');
 const popup = document.querySelector('.popup');
 const popupText = document.querySelector('.popup-text');
 const popupButton = document.querySelector('.popup-button');
+const background = document.querySelector('.background');
 
 popupButton.addEventListener('click', () => { location.reload(); } );
 
