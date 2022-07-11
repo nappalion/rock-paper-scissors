@@ -17,9 +17,11 @@ function computerPlay() {
 
 function pitouHit() {
     pitou.src = 'assets/images/pitou-animations/pitou-hit.gif';
+    background.classList.add('shake');
     setTimeout(function() {
         pitou.src = 'assets/images/pitou-animations/pitou-idle.gif';
-    }, 400);
+        background.classList.remove('shake');
+    }, 800);
 }
 
 function pitouAttack() {
@@ -60,7 +62,7 @@ function gonHit() {
         setTimeout(function() {
             gon.src = 'assets/images/gon-animations/gon-idle.gif';
             background.classList.remove('shake');
-        }, 950);
+        }, 850);
     }, 1000);
 }
 
@@ -175,7 +177,7 @@ function fadeIn() {
     var opacity = 0;
     var intervalID = setInterval(function() {
         if (opacity < 1) {
-            opacity = opacity + 0.02
+            opacity = opacity + 0.15
             fade.style.opacity = opacity;
         } else {
             clearInterval(intervalID); // clears the interval
@@ -193,10 +195,12 @@ let scissorsAudio = new Audio('assets/sounds/scissors-sound.mp3');
 let hitAudio = new Audio('assets/sounds/hit-sound.mp3');
 let nyaAudio = new Audio('assets/sounds/nya-sound.mp3');
 let animePunchAudio = new Audio('assets/sounds/anime-punch-sound.mp3');
+let battleThemeAudio = new Audio('assets/sounds/battle-theme.mp3');
 
 let playerScore = 0;
 let computerScore = 0;
 let playerSelection;
+let audioIsPaused = false;
 
 const gon = document.querySelector('.gon-sprite');
 const gonFrame = document.querySelector('.gon-frame');
@@ -211,13 +215,31 @@ const popup = document.querySelector('.popup');
 const popupText = document.querySelector('.popup-text');
 const popupButton = document.querySelector('.popup-button');
 const background = document.querySelector('.background');
+const audioToggle = document.querySelector('.audio-toggle');
+const audioIcon = document.querySelector('.audio-icon');
 
 const gonHealthMax = parseInt(gonHealth.clientWidth, 10);
 const pitouHealthMax = parseInt(pitouHealth.clientWidth, 10);
 let gonHealthNum = gonHealthMax;
 let pitouHealthNum = pitouHealthMax;
 
+battleThemeAudio.loop = true;
+battleThemeAudio.volume = 0.2;
+document.body.addEventListener("click", function () { battleThemeAudio.play(); });
+
 popupButton.addEventListener('click', () => { location.reload(); } );
+
+audioToggle.addEventListener('click', () => {
+    if (!audioIsPaused) {
+        audioIsPaused = true;
+        battleThemeAudio.volume = 0;
+        audioIcon.src = "assets/images/etc/volume-mute-fill.png";
+    } else {
+        audioIsPaused = false;
+        battleThemeAudio.volume = 0.2;
+        audioIcon.src = "assets/images/etc/volume-up-fill.png";
+    }
+});
 
 playerButtons.forEach((button) => {
     button.addEventListener('click', () => {

@@ -8,6 +8,12 @@ html, body {
     background-color: black;
 }
 
+.audio-toggle {
+    background-color: transparent;
+    border-color: transparent;
+    cursor: grab;
+}
+
 .ceiling {
     width: 90%;
     height: auto;
