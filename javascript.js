@@ -56,7 +56,6 @@ function gonScissors() {
 function gonHit() {
     setTimeout(function() {
         gon.src = 'assets/images/gon-animations/gon-hit.gif'
-        scissorsAudio.play();
         setTimeout(function() {
             gon.src = 'assets/images/gon-animations/gon-idle.gif';
         }, 950);
@@ -148,12 +147,14 @@ function playGame(playerSelection) {
         playerScore++;
     }
 
-    if (playerScore >= 5) {
+    if (playerScore >= maxScore) {
         setTimeout(function() { pitou.src = 'assets/images/pitou-animations/pitou-dead.gif'; }, 1000);
-        playerChoiceButtons.remove();
-    } else if (computerScore >= 5) {
-        setTimeout(function() { gon.src = 'assets/images/gon-animations/gon-dead.gif'; }, 2000);
-        playerChoiceButtons.remove();
+        popupText.textContent = "VICTORY";
+        popup.style.visibility = "visible";
+        
+    } else if (computerScore >= maxScore) {
+        popupText.textContent = "DEFEAT";
+        popup.style.visibility = "visible";
     }
     
 
@@ -176,6 +177,7 @@ function fadeIn() {
 window.onload = fadeIn;
 
 let tempScore = document.querySelector('p');
+const maxScore = 5;
 
 let rockAudio = new Audio('assets/sounds/rock-sound.mp3');
 let paperAudio = new Audio('assets/sounds/paper-sound.mp3');
@@ -194,6 +196,12 @@ const pitou = document.querySelector('.pitou-sprite');
 const pitouFrame = document.querySelector('.pitou-frame');
 const playerButtons = document.querySelectorAll('.choice');
 const playerChoiceButtons = document.querySelector('.player-choice');
+const popup = document.querySelector('.popup');
+const popupText = document.querySelector('.popup-text');
+const popupButton = document.querySelector('.popup-button');
+
+popupButton.addEventListener('click', () => { location.reload(); } );
+
 playerButtons.forEach((button) => {
     button.addEventListener('click', () => {
 
@@ -214,8 +222,10 @@ playerButtons.forEach((button) => {
 
         setTimeout(function() {
             playerButtons.forEach((button) => { 
-                button.disabled = false;
-                button.style.cursor = 'grab'; 
+                if (playerScore < maxScore && computerScore < maxScore) {
+                    button.disabled = false;
+                    button.style.cursor = 'grab'; 
+                }
             })}, 2500);
     });
 });
