@@ -1,3 +1,5 @@
+document.body.style.cursor='wait';
+
 function textTyper(text, interval) {
     let index = 0;
     let introTyper = setInterval(function() {
@@ -15,7 +17,7 @@ let text = "Pitou, a chimera ant, has killed your friend! She's threatening huma
 
 textTyper(text, 80);
 
-setTimeout(function() { window.location.replace('game.html'); }, 20000);
+setTimeout(function() { window.location.replace('game.html'); }, 19000);
 
 
 const menuThemeAudio = new Audio('assets/sounds/menu-theme.mp3');
